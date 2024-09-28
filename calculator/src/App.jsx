@@ -12,16 +12,20 @@ export default function App() {
     console.log("Value: " + value)
   }
 
+  const handleReset = () => {
+    setValue("")
+  }
+
   return (
     <>
       <div>
         <h1>Calculator in React</h1>
         <br />
         <br />
-        <table className="table-sm table-borderless">
-            <caption style={{backgroundColor:"gray", position:top}}>
-            {value}
+        <caption style={{backgroundColor:"gray", width:175, height:40}}>
+            <b>{value}</b>
             </caption>
+        <table className="table-sm table-borderless">
             <tbody>
               <tr>
                 <td>
@@ -40,7 +44,7 @@ export default function App() {
                   </button>
                 </td>
                 <td>
-                  <button className="btn btn-danger" type="button" style={{width:40}}>
+                  <button className="btn btn-danger" type="button" style={{width:40}} onClick={handleReset}>
                     C
                   </button>
                 </td>
