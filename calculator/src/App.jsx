@@ -7,7 +7,9 @@ export default function App() {
   const [operand, setOperand] = useState("");
 
   const handleClickNum = (event) => {
-    console.log("Clicked " + event.target.value)
+    if(operand == ""){
+      setFinalValue("")
+    }
     const newNum = value.concat(event.target.value)
     setValue(newNum)
   }
