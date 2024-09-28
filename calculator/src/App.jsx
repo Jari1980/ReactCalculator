@@ -3,17 +3,48 @@ import { useState } from "react";
 
 export default function App() {
   const [value, setValue] = useState("");
+  const [finalValue, setFinalValue] = useState("")
   const [operand, setOperand] = useState("");
 
   const handleClickNum = (event) => {
     console.log("Clicked " + event.target.value)
     const newNum = value.concat(event.target.value)
     setValue(newNum)
-    console.log("Value: " + value)
+  }
+
+  const handlePluss = () => {
+    setFinalValue(value)
+    setOperand("Pluss")
+    setValue("")
+  }
+
+  const handleMinus = () => {
+    console.log("Minus clicked: ")
+    setOperand("Minus")
+    setFinalValue(value)
+    setValue("")
+  }
+
+  const handleMultiplication = () => {
+    setFinalValue(value)
+    setOperand("Muliply")
+    setValue("")
+  }
+
+  const handleDivision = () => {
+    setFinalValue(value)
+    setOperand("Divide")
+    setValue("")
+  }
+
+  const handleBack = () => {
+    setValue(value.substring(0, value.length - 1))
   }
 
   const handleReset = () => {
     setValue("")
+    setOperand("")
+    setFinalValue("")
   }
 
   return (
@@ -22,10 +53,16 @@ export default function App() {
         <h1>Calculator in React</h1>
         <br />
         <br />
-        <caption style={{backgroundColor:"gray", width:175, height:40}}>
+        <caption style={{backgroundColor:"gray", width:178, height:40}}>
+            <b>{finalValue}</b>
+            </caption>
+            <caption style={{backgroundColor:"lightgrey", width:178, height:40}}>
+            <b>{operand}</b>
+            </caption>
+        <caption style={{backgroundColor:"gray", width:178, height:40}}>
             <b>{value}</b>
             </caption>
-        <table className="table-sm table-borderless">
+        <table className="table-sm table-borderless" style={{backgroundColor:"lightgrey"}}>
             <tbody>
               <tr>
                 <td>
@@ -66,7 +103,7 @@ export default function App() {
                   </button>
                 </td>
                 <td>
-                  <button className="btn btn-danger" type="button" style={{width:40}}>
+                  <button className="btn btn-danger" type="button" style={{width:40}} onClick={handleBack}>
                     &#60;-
                   </button>
                 </td>
@@ -88,14 +125,14 @@ export default function App() {
                   </button>
                 </td>
                 <td>
-                  <button className="btn btn-info" type="button" style={{width:40}}>
+                  <button className="btn btn-info" type="button" style={{width:40}} onClick={handleDivision}>
                     /
                   </button>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <button className="btn btn-info" type="button">
+                  <button className="btn btn-info" type="button" onClick={handlePluss}>
                     +
                   </button>
                 </td>
@@ -105,12 +142,12 @@ export default function App() {
                   </button>
                 </td>
                 <td>
-                  <button className="btn btn-info" type="button">
+                  <button className="btn btn-info" type="button" onClick={handleMinus}>
                     -
                   </button>
                 </td>
                 <td>
-                  <button className="btn btn-info" type="button" style={{width:40}}>
+                  <button className="btn btn-info" type="button" style={{width:40}} onClick={handleMultiplication}>
                     *
                   </button>
                 </td>
