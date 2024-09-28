@@ -47,6 +47,29 @@ export default function App() {
     setFinalValue("")
   }
 
+  const handleResult = () => {
+    if(operand == "Pluss"){
+      setFinalValue((parseFloat(finalValue) + parseFloat(value)))
+      setOperand("")
+      setValue("")
+    }
+    if(operand == "Minus"){
+      setFinalValue((parseFloat(finalValue) - parseFloat(value)))
+      setOperand("")
+      setValue("")
+    }
+    if(operand == "Muliply"){
+      setFinalValue((parseFloat(finalValue) * parseFloat(value)))
+      setOperand("")
+      setValue("")
+    }
+    if(operand == "Divide"){
+      setFinalValue((parseFloat(finalValue) / parseFloat(value)))
+      setOperand("")
+      setValue("")
+    }
+  }
+
   return (
     <>
       <div>
@@ -161,7 +184,7 @@ export default function App() {
                   </button>
                 </td>
                 <td>
-                  <button className="btn btn-success" type="button" style={{width:40}}>
+                  <button className="btn btn-success" type="button" style={{width:40}} onClick={handleResult}>
                     =
                   </button>
                 </td>
