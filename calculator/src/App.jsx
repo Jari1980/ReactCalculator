@@ -74,9 +74,10 @@ export default function App() {
   return (
     <>
       <div>
-        <h1>Calculator in React</h1>
+        <h1 style={{textAlign:"center"}}>Calculator in React</h1>
         <br />
         <br />
+        <div style={{position:"absolute", left:"30%", borderStyle: "solid"}}>
         <div style={{backgroundColor:"gray", width:178, height:40}}>
             <b>{finalValue}</b>
             </div>
@@ -192,6 +193,7 @@ export default function App() {
               </tr>
             </tbody>
         </table>
+        </div>
       </div>
     </>
   );
