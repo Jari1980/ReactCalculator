@@ -21,7 +21,6 @@ export default function App() {
   }
 
   const handleMinus = () => {
-    console.log("Minus clicked: ")
     setOperand("Minus")
     setFinalValue(value)
     setValue("")
@@ -78,15 +77,15 @@ export default function App() {
         <h1>Calculator in React</h1>
         <br />
         <br />
-        <caption style={{backgroundColor:"gray", width:178, height:40}}>
+        <div style={{backgroundColor:"gray", width:178, height:40}}>
             <b>{finalValue}</b>
-            </caption>
-            <caption style={{backgroundColor:"lightgrey", width:178, height:40}}>
+            </div>
+            <div style={{backgroundColor:"lightgrey", width:178, height:40}}>
             <b>{operand}</b>
-            </caption>
-        <caption style={{backgroundColor:"gray", width:178, height:40}}>
+            </div>
+        <div style={{backgroundColor:"gray", width:178, height:40}}>
             <b>{value}</b>
-            </caption>
+            </div>
         <table className="table-sm table-borderless" style={{backgroundColor:"lightgrey"}}>
             <tbody>
               <tr>
