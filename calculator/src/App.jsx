@@ -3,8 +3,9 @@ import { useState } from "react";
 
 export default function App() {
   const [value, setValue] = useState("");
-  const [finalValue, setFinalValue] = useState("")
+  const [finalValue, setFinalValue] = useState("");
   const [operand, setOperand] = useState("");
+  const [display, setDisplay] = useState("");
 
   const handleClickNum = (event) => {
     if(operand == ""){
@@ -12,40 +13,47 @@ export default function App() {
     }
     const newNum = value.concat(event.target.value)
     setValue(newNum)
+    setDisplay(newNum)
   }
 
   const handlePluss = () => {
     setFinalValue(value)
     setOperand("Pluss")
     setValue("")
+    setDisplay("+")
   }
 
   const handleMinus = () => {
     setOperand("Minus")
     setFinalValue(value)
     setValue("")
+    setDisplay("-")
   }
 
   const handleMultiplication = () => {
     setFinalValue(value)
     setOperand("Muliply")
     setValue("")
+    setDisplay("*")
   }
 
   const handleDivision = () => {
     setFinalValue(value)
     setOperand("Divide")
     setValue("")
+    setDisplay("/")
   }
 
   const handleBack = () => {
     setValue(value.substring(0, value.length - 1))
+    setDisplay(value.substring(0, value.length - 1))
   }
 
   const handleReset = () => {
     setValue("")
     setOperand("")
     setFinalValue("")
+    setDisplay("")
   }
 
   const handleResult = () => {
@@ -53,21 +61,25 @@ export default function App() {
       setFinalValue((parseFloat(finalValue) + parseFloat(value)))
       setOperand("")
       setValue("")
+      setDisplay((parseFloat(finalValue) + parseFloat(value)))
     }
     if(operand == "Minus"){
       setFinalValue((parseFloat(finalValue) - parseFloat(value)))
       setOperand("")
       setValue("")
+      setDisplay((parseFloat(finalValue) - parseFloat(value)))
     }
     if(operand == "Muliply"){
       setFinalValue((parseFloat(finalValue) * parseFloat(value)))
       setOperand("")
       setValue("")
+      setDisplay((parseFloat(finalValue) * parseFloat(value)))
     }
     if(operand == "Divide"){
       setFinalValue((parseFloat(finalValue) / parseFloat(value)))
       setOperand("")
       setValue("")
+      setDisplay((parseFloat(finalValue) / parseFloat(value)))
     }
   }
 
@@ -77,17 +89,13 @@ export default function App() {
         <h1 style={{textAlign:"center"}}>Calculator in React</h1>
         <br />
         <br />
-        <div style={{position:"absolute", left:"30%", borderStyle: "solid"}}>
-        <div style={{backgroundColor:"gray", width:178, height:40}}>
-            <b>{finalValue}</b>
+        <div style={{position:"absolute", backgroundColor:"lightgray", left:"30%", borderStyle: "solid", borderRadius:15}}>
+          
+        <div style={{backgroundColor:"gray", width:178, height:35, borderStyle: "solid", paddingLeft:10, borderRadius:15}}>
+            <b>{display}</b>
             </div>
-            <div style={{backgroundColor:"lightgrey", width:178, height:40}}>
-            <b>{operand}</b>
-            </div>
-        <div style={{backgroundColor:"gray", width:178, height:40}}>
-            <b>{value}</b>
-            </div>
-        <table className="table-sm table-borderless" style={{backgroundColor:"lightgrey"}}>
+            <br></br>
+        <table className="table-sm table-borderless" style={{backgroundColor:"lightgrey", borderRadius:15}}>
             <tbody>
               <tr>
                 <td>
